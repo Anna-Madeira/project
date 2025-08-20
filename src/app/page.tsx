@@ -1,17 +1,20 @@
 "use client"
 import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "./Routes";
-import { ThemeProvider } from "@mui/material";
-import { LightTheme } from "./Shared/themes";
+import { AppThemeProvider } from "./Shared/contexts";
+import { AppRoutes } from "./Routes/index";
+import dynamic from 'next/dynamic'; 
+
+const DynamicAppThemeProvider = dynamic(
+  () => import('./Shared/contexts').then((mod) => mod.AppThemeProvider),
+  { ssr: false } // Crucial: não renderizar no servidor
+);
+
 export default function App() {
     return (
-      <ThemeProvider theme={LightTheme}>
-  <BrowserRouter>
+      <DynamicAppThemeProvider>
+<BrowserRouter>
    <AppRoutes />
   </BrowserRouter>
-      </ThemeProvider>
-
-
-  
+</DynamicAppThemeProvider>
   );
 }
