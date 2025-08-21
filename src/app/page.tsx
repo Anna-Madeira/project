@@ -2,19 +2,16 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppThemeProvider } from "./Shared/contexts";
 import { AppRoutes } from "./Routes/index";
-import dynamic from 'next/dynamic'; 
+import { MenuLateral } from "./Shared/components";
 
-const DynamicAppThemeProvider = dynamic(
-  () => import('./Shared/contexts').then((mod) => mod.AppThemeProvider),
-  { ssr: false } // Crucial: não renderizar no servidor
-);
 
 export default function App() {
     return (
-      <DynamicAppThemeProvider>
+      <AppThemeProvider>
 <BrowserRouter>
+<MenuLateral/>
    <AppRoutes />
   </BrowserRouter>
-</DynamicAppThemeProvider>
+</AppThemeProvider>
   );
 }
