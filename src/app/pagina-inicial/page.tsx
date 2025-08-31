@@ -16,8 +16,9 @@ export default function PaginaInicialPage() {
   return (
     <DynamicAppThemeProvider>
       <BrowserRouter>
-      <MenuLateral/>
+      <MenuLateral>
         <AppRoutes />
+      </MenuLateral>
       </BrowserRouter>
     </DynamicAppThemeProvider>
   );
