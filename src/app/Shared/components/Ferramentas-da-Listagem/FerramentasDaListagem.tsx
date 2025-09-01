@@ -5,7 +5,7 @@ import { IconMap } from "../icons";
 
 
 
-interface BarraDeFerramentasProps{
+interface FerramentasDaListagemProps{
     SearchText? : string;
     ShowSearchInput? : boolean;
     ChangeSearchText? : (NewText: string) => void ;
@@ -15,7 +15,7 @@ interface BarraDeFerramentasProps{
 }
 
 
-export const BarraDeFerramentas: React.FC<BarraDeFerramentasProps> = ({
+export const FerramentasDaListagem: React.FC<FerramentasDaListagemProps> = ({
      SearchText = "", ShowSearchInput= false, ChangeSearchText, NewTextButton = "Novo", ShowNewButton = true, ClickNewButton }) => {
     const theme = useTheme();
         const IconSearch = IconMap.pesquisar;
