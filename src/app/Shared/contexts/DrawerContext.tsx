@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 
 interface IDrawerOption {
-  icon: string;
+  icon: React.ComponentType; 
   path: string;
   label: string;
 }
@@ -13,7 +13,12 @@ interface IDrawerContextData {
   setDrawerOptions: (newDrawerOptions: IDrawerOption[]) => void;
 }
 
-const DrawerContext = createContext({} as IDrawerContextData);
+const DrawerContext = createContext<IDrawerContextData>({
+  isDrawerOpen: false,
+  toggleDrawerOpen: () => {},
+  drawerOptions: [], // Initialize with an empty array
+  setDrawerOptions: () => {},
+});
 
 
 export const useDrawerContext = () => {

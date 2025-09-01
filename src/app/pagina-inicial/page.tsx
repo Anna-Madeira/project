@@ -1,21 +1,17 @@
 'use client'
 
 import { BrowserRouter } from "react-router-dom";
-import dynamic from 'next/dynamic';
 import { AppRoutes } from "../Routes/index"; 
 import { MenuLateral } from "../Shared/components";
-import { DrawerProvider } from "../Shared/contexts";
+import { DrawerProvider, AppThemeProvider} from "../Shared/contexts";
 
 
-const DynamicAppThemeProvider = dynamic(
-  () => import('../Shared/contexts').then((mod) => mod.AppThemeProvider), 
-  { ssr: false } 
-);
+
 
 
 export default function PaginaInicialPage() {
   return (
-        <DynamicAppThemeProvider>
+        <AppThemeProvider>
           <DrawerProvider>
       <BrowserRouter>
       <MenuLateral>
@@ -23,6 +19,6 @@ export default function PaginaInicialPage() {
       </MenuLateral>
       </BrowserRouter>
         </DrawerProvider>
-    </DynamicAppThemeProvider>
+    </AppThemeProvider>
   );
 }

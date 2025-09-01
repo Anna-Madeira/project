@@ -3,14 +3,18 @@ import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import {Box} from "@mui/system"
 
 import { useDrawerContext } from "../../contexts";
+import { IconMap } from '../icons';
+import { useEffect } from "react";
 
+
+ 
 interface IListItemLinkProps {
     label: string;
-    icon: string;
+    icon: React.ComponentType;
     to: string;
     onClick: (() => void) | undefined;
 }
-const ListItemLink: React.FC<IListItemLinkProps> = ({to, icon, label, onClick}) => {
+const ListItemLink: React.FC<IListItemLinkProps> = ({to, icon: IconComponent, label, onClick}) => {
     const navigate = useNavigate();
 
         const resolvedPath = useResolvedPath(to);
@@ -25,7 +29,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({to, icon, label, onClick}) 
     return (
     <ListItemButton selected={!!match} onClick={handleClick}>
       <ListItemIcon>
-        <Icon>{icon}</Icon>
+       <IconComponent /> 
       </ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
@@ -42,7 +46,18 @@ export const MenuLateral: React.FC<Props> = ({ children }) => {
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, drawerOptions, toggleDrawerOpen,  setDrawerOptions } = useDrawerContext();
+
+useEffect(() => {
+    setDrawerOptions([
+      {
+        icon: IconMap.home,
+        path: '/pagina-inicial',
+        label: 'Página inicial',
+      },
+     
+    ]);
+  }, [setDrawerOptions]);
 
     return(
         <>
@@ -57,7 +72,7 @@ export const MenuLateral: React.FC<Props> = ({ children }) => {
             <Box flex={1}>
 
             <List component="nav">
-               {drawerOptions.map(drawerOption => (
+               {drawerOptions.map((drawerOption) => (
                 <ListItemLink
                   to={drawerOption.path}
                   key={drawerOption.path}
