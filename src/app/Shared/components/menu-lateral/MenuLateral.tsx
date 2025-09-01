@@ -2,7 +2,7 @@ import { Drawer, useTheme, Divider, Icon, List, ListItemButton, ListItemText, Li
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import {Box} from "@mui/system"
 
-import { useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { IconMap } from '../icons';
 import { useEffect } from "react";
 
@@ -47,6 +47,8 @@ export const MenuLateral: React.FC<Props> = ({ children }) => {
     const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { isDrawerOpen, drawerOptions, toggleDrawerOpen,  setDrawerOptions } = useDrawerContext();
+const {toggleTheme} = useAppThemeContext();
+    const IconComponent = IconMap.Dark;
 
 useEffect(() => {
     setDrawerOptions([
@@ -55,7 +57,7 @@ useEffect(() => {
         path: '/pagina-inicial',
         label: 'Página inicial',
       },
-     
+
     ]);
   }, [setDrawerOptions]);
 
@@ -81,6 +83,18 @@ useEffect(() => {
                   onClick={smDown ? toggleDrawerOpen : undefined}
                 />
               ))}
+            </List>
+            </Box>
+
+            <Box>
+
+            <List component="nav">
+                <ListItemButton onClick={toggleTheme}>
+                  <ListItemIcon>
+                  <IconComponent /> 
+                  </ListItemIcon>
+                  <ListItemText primary="Alterar Tema" />
+                </ListItemButton>
             </List>
             </Box>
 
