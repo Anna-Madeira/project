@@ -1,7 +1,9 @@
 "use client"
 
 import { Box, Button, InputAdornment, Paper, TextField, useTheme } from "@mui/material";
+
 import { IconMap } from "../icons";
+import { Enviroment } from "../../enviroments";
 
 
 
@@ -36,7 +38,7 @@ export const FerramentasDaListagem: React.FC<FerramentasDaListagemProps> = ({
        {ShowSearchInput && (
          <TextField 
         size="small"
-        placeholder="Pesquisar..."
+        placeholder={Enviroment.INPUT_DE_BUSCA}
         value={SearchText}
         onChange={(e) => ChangeSearchText?.(e.target.value)}
         slotProps={{
