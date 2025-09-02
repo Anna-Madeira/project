@@ -1,0 +1,14 @@
+{
+  "pessoas": [
+    {
+      "id": "1234",
+      "nome": "Anna",
+      "email": "anna@exemplo.com"
+    },
+    {
+      "id": "2",
+      "nome": "Teste",
+      "email": "anna@exemplo.com"
+    }
+]
+}
