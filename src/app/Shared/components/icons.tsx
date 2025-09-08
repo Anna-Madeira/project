@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import SaveIcon from '@mui/icons-material/Save';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import DeleteIcon from '@mui/icons-material/Delete';
+import PersonIcon from '@mui/icons-material/Person';
 
 
 export const IconMap = {
@@ -20,6 +21,7 @@ export const IconMap = {
   save: SaveIcon,
   back: ArrowBackIcon,
   delete: DeleteIcon,
+  person: PersonIcon,
   
 
 };

@@ -1,24 +1,21 @@
-'use client'
+import { BrowserRouter } from 'react-router-dom';
 
-import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "../Routes/index"; 
-import { MenuLateral } from "../Shared/components";
-import { DrawerProvider, AppThemeProvider} from "../Shared/contexts";
+import { AppThemeProvider, DrawerProvider } from '../Shared/contexts';
+import { MenuLateral } from '../Shared/components';
+import { AppRoutes } from '../Routes';
 
-
-
-
-
-export default function PaginaInicialPage() {
+export const App = () => {
   return (
-        <AppThemeProvider>
-          <DrawerProvider>
-      <BrowserRouter>
-      <MenuLateral>
-        <AppRoutes />
-      </MenuLateral>
-      </BrowserRouter>
-        </DrawerProvider>
+    <AppThemeProvider>
+      <DrawerProvider>
+        <BrowserRouter>
+
+          <MenuLateral>
+            <AppRoutes />
+          </MenuLateral>
+
+        </BrowserRouter>
+      </DrawerProvider>
     </AppThemeProvider>
   );
-}
+};

@@ -1,18 +1,22 @@
-"use client"
+import { FerramentasDeDetalhe } from '../../Shared/components';
+import { LayoutBaseDePagina } from '../../Shared/layouts';
 
-import { FerramentasDeDetalhe } from "@/app/Shared/components";
-import { LayoutBaseDePagina } from "@/app/Shared/layouts";
 
 export const Dashboard = () => {
 
-return(
-    <LayoutBaseDePagina 
-    titulo="Página Inicial"
-    barraDeFerramentas={(
-        <FerramentasDeDetalhe mostrarBotaoSalvarEFechar />
-    )}>
-        Teste
+  return (
+    <LayoutBaseDePagina
+      titulo='Página inicial'
+      barraDeFerramentas={(
+        <FerramentasDeDetalhe
+          mostrarBotaoNovo
+          mostrarBotaoSalvarEFechar
+          mostrarBotaoSalvarEFecharCarregando
+          mostrarBotaoVoltar={false}
+        />
+      )}
+    >
+      Testando
     </LayoutBaseDePagina>
-
-);
+  );
 };

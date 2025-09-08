@@ -1,4 +1,4 @@
-import { Drawer, useTheme, Divider, Icon, List, ListItemButton, ListItemText, ListItemIcon, Avatar, useMediaQuery } from "@mui/material";
+import { Drawer, useTheme, Divider,  List, ListItemButton, ListItemText, ListItemIcon, Avatar, useMediaQuery } from "@mui/material";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import {Box} from "@mui/system"
 
