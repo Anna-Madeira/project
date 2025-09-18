@@ -1,9 +1,10 @@
 "use client"
 
 import { Box, Button, InputAdornment, Paper, TextField, useTheme } from "@mui/material";
-
 import { IconMap } from "../icons";
 import { Enviroment } from "../../enviroments";
+import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -20,9 +21,11 @@ interface FerramentasDaListagemProps{
 export const FerramentasDaListagem: React.FC<FerramentasDaListagemProps> = ({
      SearchText = "", ShowSearchInput= false, ChangeSearchText, NewTextButton = "Novo", ShowNewButton = true, ClickNewButton }) => {
     const theme = useTheme();
+    const navigate = useNavigate();
         const IconSearch = IconMap.pesquisar;
-                const IconAdd = IconMap.add;
-
+        const handleNewButtonClick = () => {
+navigate('../../../Pages/pessoas/DetalheDePessoa.tsx', { replace: true });};
+               
     return(
        <Box 
        gap={1}
@@ -56,8 +59,8 @@ export const FerramentasDaListagem: React.FC<FerramentasDaListagemProps> = ({
         color="primary"
         disableElevation
         variant="contained"
-        onClick={ClickNewButton}
-        endIcon={<IconAdd />}>
+        onClick={handleNewButtonClick}
+        endIcon={<AddIcon />} >
             {NewTextButton}
         </Button>
 

@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
 
-import { PessoasService } from '../../Shared/Services/api/pessoas/PessoasService';
+import { PessoasService } from '../../Shared/services/api/pessoas/PessoasService';
 import { FerramentasDeDetalhe } from '../../Shared/components';
 import { LayoutBaseDePagina } from '../../Shared/layouts';
-//**import { VTextField } from '../../Shared/forms';
 
 
 interface IFormData {
@@ -19,7 +16,7 @@ export const DetalheDePessoas: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>();
   const navigate = useNavigate();
 
-  const formRef = useRef<FormHandles>(null);
+  //const formRef = useRef<FormHandles>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [nome, setNome] = useState('');
@@ -64,30 +61,28 @@ export const DetalheDePessoas: React.FC = () => {
 
 
   return (
-    <LayoutBaseDePagina
-      titulo={id === 'nova' ? 'Nova pessoa' : nome}
-      barraDeFerramentas={
-        <FerramentasDeDetalhe
-          textoBotaoNovo='Nova'
-          mostrarBotaoSalvarEFechar
-          mostrarBotaoNovo={id !== 'nova'}
-          mostrarBotaoApagar={id !== 'nova'}
+    //<LayoutBaseDePagina
+     // titulo={id === 'nova' ? 'Nova pessoa' : nome}
+     // barraDeFerramentas={
+       // <FerramentasDeDetalhe
+         // textoBotaoNovo='Nova'
+          //mostrarBotaoSalvarEFechar
+         // mostrarBotaoNovo={id !== 'nova'}
+          //mostrarBotaoApagar={id !== 'nova'}
 
-          aoClicarEmVoltar={() => navigate('/pessoas')}
-          aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmSalvar={() => formRef.current?.submitForm()}
-          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
-          aoClicarEmSalvarEFechar={() => formRef.current?.submitForm()}
-        />
-      }
-    >
+          //aoClicarEmVoltar={() => navigate('/pessoas')}
+         // aoClicarEmApagar={() => handleDelete(Number(id))}
+          //aoClicarEmSalvar={() => formRef.current?.submitForm()}
+          //aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
+         // aoClicarEmSalvarEFechar={() => formRef.current?.submitForm()}
+      //  />
+    //  }> 
 
-      <Form ref={formRef} onSubmit={handleSave}>
-        <VTextField name='nomeCompleto' />
-        <VTextField name='email' />
-        <VTextField name='cidadeId' />
-      </Form>
-
-    </LayoutBaseDePagina>
-  );
+    //</LayoutBaseDePagina>
+    //inserir dentro da tag layoutbasedepagina
+  <div></div>); //<Form ref={formRef} onSubmit={handleSave}>
+      //  <VTextField name='nomeCompleto' />
+       // <VTextField name='email' />
+        // <VTextField name='cidadeId' />
+     // </Form>
 };

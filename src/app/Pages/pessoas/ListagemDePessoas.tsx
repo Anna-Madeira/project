@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useMemo, useState } from 'react';
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -6,7 +8,7 @@ import { IListagemPessoa, PessoasService, } from '../../Shared/services/api/pess
 import { FerramentasDaListagem } from '../../Shared/components';
 import { LayoutBaseDePagina } from '../../Shared/layouts';
 import { useDebounce } from '../../Shared/hooks';
-import { Environment } from '../../Shared/environment';
+import { Enviroment } from '../../Shared/enviroments';
 
 
 export const ListagemDePessoas: React.FC = () => {
@@ -46,6 +48,7 @@ export const ListagemDePessoas: React.FC = () => {
           }
         });
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [busca, pagina]);
 
   const handleDelete = (id: number) => {
@@ -70,11 +73,11 @@ export const ListagemDePessoas: React.FC = () => {
       titulo='Listagem de pessoas'
       barraDeFerramentas={
         <FerramentasDaListagem
-          mostrarInputBusca
-          textoDaBusca={busca}
-          textoBotaoNovo='Nova'
-          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
-          aoMudarTextoDeBusca={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
+          ShowSearchInput
+          SearchText={busca}
+          NewTextButton='Nova'
+          ClickNewButton={() => navigate('/pessoas/detalhe/nova')}
+          ChangeSearchText={Newtext => setSearchParams({ busca: Newtext, pagina: '1' }, { replace: true })}
         />
       }
     >
@@ -105,7 +108,7 @@ export const ListagemDePessoas: React.FC = () => {
           </TableBody>
 
           {totalCount === 0 && !isLoading && (
-            <caption>{Environment.LISTAGEM_VAZIA}</caption>
+            <caption>{Enviroment.LISTAGEM_VAZIA}</caption>
           )}
 
           <TableFooter>
@@ -116,12 +119,12 @@ export const ListagemDePessoas: React.FC = () => {
                 </TableCell>
               </TableRow>
             )}
-            {(totalCount > 0 && totalCount > Environment.LIMITE_DE_LINHAS) && (
+            {(totalCount > 0 && totalCount > Enviroment.LIMITE_DE_LINHAS) && (
               <TableRow>
                 <TableCell colSpan={3}>
                   <Pagination
                     page={pagina}
-                    count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS)}
+                    count={Math.ceil(totalCount / Enviroment.LIMITE_DE_LINHAS)}
                     onChange={(_, newPage) => setSearchParams({ busca, pagina: newPage.toString() }, { replace: true })}
                   />
                 </TableCell>
