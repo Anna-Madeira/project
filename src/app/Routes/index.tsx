@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { useDrawerContext } from '../Shared/contexts';
+import { useDrawerContext } from '../shared/contexts';
 import {
   Dashboard,
   DetalheDePessoas,
   ListagemDePessoas,
 } from '../Pages';
-import { IconMap } from '../Shared/components/icons';
+import { IconMap } from '../shared/components/icons';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
