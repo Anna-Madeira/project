@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useMemo, useState } from 'react';
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -7,6 +8,7 @@ import { FerramentasDaListagem } from '../../shared/components';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
+import { IconMap } from '@/app/shared/components/icons';
 
 
 export const ListagemDeCidades: React.FC = () => {
@@ -70,11 +72,11 @@ export const ListagemDeCidades: React.FC = () => {
       titulo='Listagem de cidades'
       barraDeFerramentas={
         <FerramentasDaListagem
-          mostrarInputBusca
-          textoDaBusca={busca}
-          textoBotaoNovo='Nova'
-          aoClicarEmNovo={() => navigate('/cidades/detalhe/nova')}
-          aoMudarTextoDeBusca={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
+          ShowSearchInput
+          SearchText={busca}
+          NewTextButton='Nova'
+          ClickNewButton={() => navigate('/cidades/detalhe/nova')}
+          ChangeSearchText={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
         />
       }
     >
@@ -91,10 +93,10 @@ export const ListagemDeCidades: React.FC = () => {
               <TableRow key={row.id}>
                 <TableCell>
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
-                    <Icon>delete</Icon>
+                    <IconMap.delete />
                   </IconButton>
                   <IconButton size="small" onClick={() => navigate(`/cidades/detalhe/${row.id}`)}>
-                    <Icon>edit</Icon>
+                    <IconMap.Edit /> 
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nome}</TableCell>

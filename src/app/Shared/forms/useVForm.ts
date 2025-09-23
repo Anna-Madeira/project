@@ -1,3 +1,4 @@
+"use client"
 import { FormHandles } from '@unform/core';
 import { useCallback, useRef } from 'react';
 

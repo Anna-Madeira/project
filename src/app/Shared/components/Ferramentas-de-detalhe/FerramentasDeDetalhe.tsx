@@ -1,4 +1,6 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+"use client"
+import { Box, Button, Divider, Paper, Skeleton, Theme, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { IconMap } from '../icons';
 
 
 interface IFerramentasDeDetalheProps {
@@ -64,7 +66,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant='contained'
           onClick={aoClicarEmSalvar}
-          startIcon={<Icon>save</Icon>}
+          startIcon={<IconMap.save/>}
         >
           <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
             Salvar
@@ -82,7 +84,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant='outlined'
           onClick={aoClicarEmSalvarEFechar}
-          startIcon={<Icon>save</Icon>}
+          startIcon={<IconMap.save/>}
         >
           <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
             Salvar e fechar
@@ -100,7 +102,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant='outlined'
           onClick={aoClicarEmApagar}
-          startIcon={<Icon>delete</Icon>}
+          startIcon={<IconMap.delete/>}
         >
           <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
             Apagar
@@ -118,7 +120,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant='outlined'
           onClick={aoClicarEmNovo}
-          startIcon={<Icon>add</Icon>}
+          startIcon={<IconMap.add/>}
         >
           <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
             {textoBotaoNovo}
@@ -145,7 +147,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant='outlined'
           onClick={aoClicarEmVoltar}
-          startIcon={<Icon>arrow_back</Icon>}
+          startIcon={<IconMap.back/>}
         >
           <Typography variant='button' whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden">
             Voltar
