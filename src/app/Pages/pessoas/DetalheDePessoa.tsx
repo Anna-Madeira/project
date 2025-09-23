@@ -1,7 +1,9 @@
+"use client"
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
+
 
 import { PessoasService } from '../../shared/services/api/pessoas/PessoasService';
 import { VTextField, VForm, useVForm, IVFormErrors } from '../../shared/forms';
@@ -15,13 +17,13 @@ interface IFormData {
   cidadeId: number;
   nomeCompleto: string;
 }
-const formValidationSchema: yup.SchemaOf<IFormData> = yup.object().shape({
+const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
   cidadeId: yup.number().required(),
   email: yup.string().required().email(),
   nomeCompleto: yup.string().required().min(3),
 });
 
-export const DetalheDePessoas: React.FC = () => {
+export const DetalheDePessoas: React.FC<React.ComponentProps<typeof VForm>> = ({ onSubmit, ...restProps }) => {
   const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
   const { id = 'nova' } = useParams<'id'>();
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ export const DetalheDePessoas: React.FC = () => {
         cidadeId: undefined,
       });
     }
-  }, [id]);
+  }, [id, navigate]);
 
 
   const handleSave = (dados: IFormData) => {
@@ -140,24 +142,25 @@ export const DetalheDePessoas: React.FC = () => {
           aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
         />
       }
-    >
-      <VForm ref={formRef} onSubmit={handleSave}>
-        <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">
+    > 
+          <VForm ref={formRef} onSubmit={handleSave} {...restProps}>
+
+            <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">
 
           <Grid container direction="column" padding={2} spacing={2}>
 
             {isLoading && (
-              <Grid item>
+              <Grid >
                 <LinearProgress variant='indeterminate' />
               </Grid>
             )}
 
-            <Grid item>
+            <Grid >
               <Typography variant='h6'>Geral</Typography>
             </Grid>
 
-            <Grid container item direction="row" spacing={2}>
-              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+            <Grid container direction="row" spacing={2}>
+              <Grid size={{xs: 12, sm: 12, md: 6, lg:4,  xl:2}} >
                 <VTextField
                   fullWidth
                   name='nomeCompleto'
@@ -168,8 +171,8 @@ export const DetalheDePessoas: React.FC = () => {
               </Grid>
             </Grid>
 
-            <Grid container item direction="row" spacing={2}>
-              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+            <Grid container direction="row" spacing={2}>
+              <Grid size={{xs: 12, sm: 12, md: 6, lg:4,  xl:2}}>
                 <VTextField
                   fullWidth
                   name='email'
@@ -179,8 +182,8 @@ export const DetalheDePessoas: React.FC = () => {
               </Grid>
             </Grid>
 
-            <Grid container item direction="row" spacing={2}>
-              <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+            <Grid container direction="row" spacing={2}>
+              <Grid size={{xs: 12, sm: 12, md: 6, lg:4,  xl:2}}>
                 <AutoCompleteCidade isExternalLoading={isLoading} />
               </Grid>
             </Grid>

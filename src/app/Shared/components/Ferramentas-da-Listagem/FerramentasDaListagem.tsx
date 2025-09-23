@@ -2,7 +2,7 @@
 
 import { Box, Button, InputAdornment, Paper, TextField, useTheme } from "@mui/material";
 import { IconMap } from "../icons";
-import { Enviroment } from "../../enviroments";
+import { Environment } from "../../environment";
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ navigate('../../../Pages/pessoas/DetalheDePessoa.tsx', { replace: true });};
        {ShowSearchInput && (
          <TextField 
         size="small"
-        placeholder={Enviroment.INPUT_DE_BUSCA}
+        placeholder={Environment.INPUT_DE_BUSCA}
         value={SearchText}
         onChange={(e) => ChangeSearchText?.(e.target.value)}
         slotProps={{

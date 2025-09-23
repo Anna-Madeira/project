@@ -1,4 +1,4 @@
-export const Enviroment = {
+export const Environment = {
     /**
      * Define a quantidade de linhas a ser carregada por padrão nas listagens
      */
@@ -14,6 +14,6 @@ export const Enviroment = {
     /**
      * url base de consulta dos dados dessa aplicação
      */
-    URL_BASE: 'https://localhost:3333',
+    URL_BASE: 'http://localhost:3333',
 };
 
