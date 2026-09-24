@@ -47,7 +47,7 @@ export const DetalheDeCidades: React.FC = () => {
         nome: '',
       });
     }
-  }, [id]);
+  }, [id, formRef, navigate]);
 
 
   const handleSave = (dados: IFormData) => {

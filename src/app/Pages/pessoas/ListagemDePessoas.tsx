@@ -48,7 +48,7 @@ export const ListagemDePessoas: React.FC = () => {
           }
         });
     });
-  }, [busca, pagina]);
+  }, [busca, pagina, debounce]);
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {

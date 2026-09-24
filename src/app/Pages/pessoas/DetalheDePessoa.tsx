@@ -55,7 +55,7 @@ export const DetalheDePessoas: React.FC = () => {
         cidadeId: undefined,
       });
     }
-  }, [id, navigate]);
+  }, [id, navigate, formRef]);
 
 
   const handleSave = (dados: IFormData) => {

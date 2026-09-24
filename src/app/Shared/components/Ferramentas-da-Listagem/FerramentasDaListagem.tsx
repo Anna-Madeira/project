@@ -4,7 +4,6 @@ import { Box, Button, InputAdornment, Paper, TextField, useTheme } from "@mui/ma
 import { IconMap } from "../icons";
 import { Environment } from "../../environment";
 import AddIcon from '@mui/icons-material/Add';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -21,11 +20,8 @@ interface FerramentasDaListagemProps{
 export const FerramentasDaListagem: React.FC<FerramentasDaListagemProps> = ({
      SearchText = "", ShowSearchInput= false, ChangeSearchText, NewTextButton = "Novo", ShowNewButton = true, ClickNewButton }) => {
     const theme = useTheme();
-    const navigate = useNavigate();
-        const IconSearch = IconMap.pesquisar;
-        const handleNewButtonClick = () => {
-navigate('../../../Pages/pessoas/DetalheDePessoa.tsx', { replace: true });};
-               
+    const IconSearch = IconMap.pesquisar;
+
     return(
        <Box 
        gap={1}
@@ -59,7 +55,7 @@ navigate('../../../Pages/pessoas/DetalheDePessoa.tsx', { replace: true });};
         color="primary"
         disableElevation
         variant="contained"
-        onClick={handleNewButtonClick}
+        onClick={ClickNewButton}
         endIcon={<AddIcon />} >
             {NewTextButton}
         </Button>

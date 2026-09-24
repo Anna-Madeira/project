@@ -44,7 +44,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { isDrawerOpen, setDrawerOptions, drawerOptions, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
   const { toggleTheme } = useAppThemeContext();
     const { Dark, Sair } = IconMap;
 

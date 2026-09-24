@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useMemo, useState } from 'react';
-import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
+import { IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { IListagemCidade, CidadesService, } from '../../shared/services/api/cidades/CidadesService';
@@ -48,7 +48,7 @@ export const ListagemDeCidades: React.FC = () => {
           }
         });
     });
-  }, [busca, pagina]);
+  }, [busca, pagina, debounce]);
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {

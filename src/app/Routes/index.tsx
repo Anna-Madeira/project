@@ -34,7 +34,7 @@ export const AppRoutes = () => {
         label: 'Pessoas',
       },
     ]);
-  }, []);
+  }, [setDrawerOptions]);
 
   return (
     <Routes>
