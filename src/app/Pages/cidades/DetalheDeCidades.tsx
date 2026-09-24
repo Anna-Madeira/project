@@ -17,7 +17,7 @@ const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
   nome: yup.string().required().min(3),
 });
 
-export const DetalheDeCidades: React.FC<React.ComponentProps<typeof VForm>> = ({ onSubmit, ...restProps }) => {
+export const DetalheDeCidades: React.FC = () => {
   const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
   const { id = 'nova' } = useParams<'id'>();
   const navigate = useNavigate();
@@ -134,7 +134,7 @@ export const DetalheDeCidades: React.FC<React.ComponentProps<typeof VForm>> = ({
         />
       }
     >
-      <VForm ref={formRef} onSubmit={handleSave} {...restProps} >
+      <VForm ref={formRef} onSubmit={handleSave}>
         <Box margin={1} display="flex" flexDirection="column" component={Paper} variant="outlined">
 
           <Grid container direction="column" padding={2} spacing={2}>
