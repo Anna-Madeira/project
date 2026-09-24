@@ -7,7 +7,6 @@ import { Box } from '@mui/system';
 
 import { useAppThemeContext, useAuthContext, useDrawerContext } from '../../contexts';
 import { IconMap } from '../icons';
-import { useEffect } from 'react';
 
 
 interface IListItemLinkProps {
